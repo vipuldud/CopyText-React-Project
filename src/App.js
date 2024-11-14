@@ -1,17 +1,18 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [text, setText] = useState("");
 
-  // Function to handle text copying
   const handleCopy = () => {
     navigator.clipboard.writeText(text);
-    alert("Text copied to clipboard!");
+    toast.success("Text copied to clipboard!");
   };
 
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Copy Text Example</h1>
+      <h1>Copy Text Example with Toast</h1>
       <input
         type="text"
         value={text}
@@ -22,6 +23,9 @@ function App() {
       <button onClick={handleCopy} style={{ padding: "10px", marginLeft: "10px" }}>
         Copy Text
       </button>
+
+      {/* Toast container to display notifications */}
+      <ToastContainer />
     </div>
   );
 }
